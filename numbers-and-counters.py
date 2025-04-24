@@ -18,10 +18,7 @@ cfg = [
           }
     ),
     ("つ", {
-          "must_include": [1, 10],
-          "n_random_cards": 10,
-          "min_value": 11,
-          "max_value": 100,
+          "must_include": [1, 9],
           }
      ),
     ("個", {
