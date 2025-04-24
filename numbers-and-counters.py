@@ -1,8 +1,5 @@
 import pandas as pd
 import numpy as np
-import pykakasi
-
-kks = pykakasi.kakasi()
 
 np.random.seed(20250424)
 
@@ -65,7 +62,6 @@ cfg = [
 
 def add_one_line(number, suffix, cfg):
     line = str(number) + suffix + "," + cfg["tags"]
-    import ipdb; ipdb.set_trace()
     return line
 
 result = []
@@ -90,12 +86,6 @@ for counter, counter_cfg in cfg:
             )
         )
         this_result = this_result + [add_one_line(number=i, suffix=counter, cfg=counter_cfg) for i in random_ints]
-
-    # Add tags, furigana, etc.
-        #this_result = [
-        #number + "," + kks.convert("number")["hira"] + "," + counter_cfg["tags"]
-    #for number in this_result
-    #]
 
     result = result + this_result
 
