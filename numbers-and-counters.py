@@ -67,5 +67,5 @@ for counter, counter_cfg in cfg:
 # print(result)
 
 result_df = pd.DataFrame(result, columns=["number"])
-result_df.to_csv("japanese-numbers.csv", index=None)
+result_df.to_csv("japanese-numbers.csv", index=None, header=False)
 
