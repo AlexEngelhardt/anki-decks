@@ -1,8 +1,7 @@
 import pandas as pd
-import random
 import numpy as np
 
-random.seed(20250424)
+np.random.seed(20250424)
 
 
 cfg = {
@@ -50,4 +49,7 @@ for counter, counter_cfg in cfg.items():
     
 
 print(result)
+
+result_df = pd.DataFrame(result, columns=["number"])
+result_df.to_csv("japanese-numbers.csv", index=None)
 
