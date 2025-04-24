@@ -63,6 +63,11 @@ cfg = [
     ),
 ]
 
+def add_one_line(number, suffix, cfg):
+    line = str(number) + suffix + "," + cfg["tags"]
+    import ipdb; ipdb.set_trace()
+    return line
+
 result = []
 
 for counter, counter_cfg in cfg:
@@ -71,7 +76,7 @@ for counter, counter_cfg in cfg:
     # Create the numbers themselves
     if "must_include" in counter_cfg:
         this_result = this_result + [
-            str(i) + counter
+            add_one_line(number=i, suffix=counter, cfg=counter_cfg)
             for i in range(
                 counter_cfg["must_include"][0], counter_cfg["must_include"][1] + 1
             )
@@ -84,13 +89,13 @@ for counter, counter_cfg in cfg:
                 size=counter_cfg["n_random_cards"],
             )
         )
-        this_result = this_result + [str(i) + counter for i in random_ints]
+        this_result = this_result + [add_one_line(number=i, suffix=counter, cfg=counter_cfg) for i in random_ints]
 
     # Add tags, furigana, etc.
-    this_result = [
-        number + "," + kks.convert("number")["hira"] + "," + counter_cfg["tags"]
-        for number in this_result
-    ]
+        #this_result = [
+        #number + "," + kks.convert("number")["hira"] + "," + counter_cfg["tags"]
+    #for number in this_result
+    #]
 
     result = result + this_result
 
@@ -98,4 +103,6 @@ for counter, counter_cfg in cfg:
 # print(result)
 
 result_df = pd.DataFrame(result)
+print(result_df)
 result_df.to_csv("japanese-numbers.csv", index=None, header=False)
+
