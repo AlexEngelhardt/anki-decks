@@ -3,6 +3,7 @@ import numpy as np
 
 np.random.seed(20250424)
 
+# For furigana and readings, pykakasi doesn't work well. I might have to implement something myself.
 
 cfg = [
     (
@@ -61,7 +62,7 @@ cfg = [
 ]
 
 def add_one_line(number, suffix, cfg):
-    line = str(number) + suffix + "," + cfg["tags"]
+    line = [str(number) + suffix, cfg["tags"]]
     return line
 
 result = []
