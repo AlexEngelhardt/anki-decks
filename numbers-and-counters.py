@@ -4,6 +4,7 @@ import numpy as np
 np.random.seed(20250424)
 
 # For furigana and readings, pykakasi doesn't work well. I might have to implement something myself.
+# 'kanjize' might work for the >10 part of the numbers
 
 cfg = [
     (
@@ -89,6 +90,70 @@ for counter, counter_cfg in cfg:
         this_result = this_result + [add_one_line(number=i, suffix=counter, cfg=counter_cfg) for i in random_ints]
 
     result = result + this_result
+
+# Add some dates and times
+# TODO: Randomize this
+dates = [
+    "7月1日", 
+    "8月2日", 
+    "9月3日", 
+    "10月4日", 
+    "11月5日", 
+    "12月6日", 
+    "1月7日", 
+    "2月8日", 
+    "3月9日", 
+    "4月10日", 
+    "5月11日", 
+    "6月12日", 
+    "7月13日", 
+    "8月14日", 
+    "9月15日", 
+    "10月16日", 
+    "11月17日", 
+    "12月18日", 
+    "1月19日", 
+    "2月20日", 
+    "3月21日", 
+    "4月22日", 
+    "5月23日", 
+    "6月24日", 
+    "7月25日", 
+    "8月26日", 
+    "9月27日", 
+    "10月28日", 
+    "11月29日", 
+    "12月30日", 
+    "1月31日", 
+]
+dates = [[x, "numbers::month_days"] for x in dates]
+result = result + dates
+
+times = [
+    "午前1時5分",
+    "午後2時10分",
+    "午前3時15分",
+    "午後4時20分",
+    "午前5時25分",
+    "午後6時30分",
+    "午前7時35分",
+    "午後8時40分",
+    "午前9時45分",
+    "午後10時50分",
+    "午前11時55分",
+    "午後12時半",
+
+    "午後4時51分",
+    "午前5時42分",
+    "午後6時33分",
+    "午前7時24分",
+    "午後8時16分",
+    "午前9時57分",
+    "午後10時48分",
+    "午前11時39分",
+]
+times = [[x, "numbers::times"] for x in times]
+result = result + times
 
 
 # print(result)
