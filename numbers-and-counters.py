@@ -20,8 +20,9 @@ cfg = [
         "",
         {  # Create 10 more cards for large numbers
             "n_random_cards": 10,
-            "min_value": 1_000,
-            "max_value": 1_000_000,
+            "min_value": 1,
+            "max_value": 1_000,
+            "multiply_by": 1_000,  # to get only 3 non-zero digits
             "tags": "counters::plain",
         },
     ),
@@ -87,6 +88,8 @@ for counter, counter_cfg in cfg:
                 size=counter_cfg["n_random_cards"],
             )
         )
+        if "multiply_by" in counter_cfg.keys():
+            random_ints = [x * counter_cfg["multiply_by"] for x in random_ints]
         this_result = this_result + [add_one_line(number=i, suffix=counter, cfg=counter_cfg) for i in random_ints]
 
     result = result + this_result
